@@ -119,7 +119,36 @@ const Letter = () => {
 
   return (
     <>
-      <p>Hello Letter</p>
+      {profiles.length > 0 && profiles.map((user) => (
+        user.hasOwnProperty('id') &&
+        user.hasOwnProperty('username') &&
+        <div key={user.id + user.username} className="card">
+          <div className="user" data-testid={`user-${user.id}`}>
+            {user.hasOwnProperty('name') && <h4 data-testid={`name-${user.id}`}>Name: {user.name}</h4>}
+            {user.hasOwnProperty('username') && <h4 data-testid={`username-${user.id}`}>Username: {user.username}</h4>}
+            {user.hasOwnProperty('email') && <h4 data-testid={`email-${user.id}`}>Email: {user.email}</h4>}
+            {user.hasOwnProperty('address') && <h4 data-testid={`address-${user.id}`}>Address: {user.address}</h4>}
+            {user.hasOwnProperty('phone') && <h4 data-testid={`phone-${user.id}`}>Phone: {user.phone}</h4>}
+            {user.hasOwnProperty('website') && <h4 data-testid={`website-${user.id}`}>Website: {user.website}</h4>}
+            {user.hasOwnProperty('company') && <h4 data-testid={`company-${user.id}`}>Company: {user.company}</h4>}
+            {user.hasOwnProperty('id') && <h4 data-testid={`id-${user.id}`}>User Id: {user.id}</h4>}
+            {user.hasOwnProperty('posts') && <h4>Posts: </h4>}
+            <ul>
+              {user.hasOwnProperty('posts') && user.posts
+                .map((post) => (
+                  post.hasOwnProperty('id') &&
+                  post.hasOwnProperty('userId') &&
+                  <li key={post.id + post.userId} style={listStyle}>
+                    <p data-testid={`postid-${post.id}`}>Post id: {post.id}</p>
+                    {post.hasOwnProperty('title') && <p data-testid={`posttitle-${post.id}`}>Post title: {post.title}</p>}
+                    {post.hasOwnProperty('body') && <p data-testid={`postbody-${post.id}`}>Post body: {post.body}</p>}
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+      <p data-testid="loading-message">{loadingMessage}</p>
     </>
   );
 };
