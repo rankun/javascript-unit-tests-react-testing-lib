@@ -11,7 +11,6 @@ const Letter = () => {
     axios
       .get(`https://jsonplaceholder.typicode.com/users`)
       .then((res) => {
-        console.log(res.data);
         setUsers(res.data);
         setLoadingMessage('Dados dos usuários carregados do servidor.');
       })
@@ -43,7 +42,6 @@ const Letter = () => {
     axios
       .get(`https://jsonplaceholder.typicode.com/posts`)
       .then((res) => {
-        console.log(res.data);
         setPosts(res.data);
       })
       .catch((error) => {
