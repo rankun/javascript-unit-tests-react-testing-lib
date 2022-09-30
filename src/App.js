@@ -5,8 +5,8 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={<p>hello</p>} />
-        <Route path="/users" exact component={<p>hello</p>} />
+        <Route path="/" exact component={Letter} />
+        <Route path="/users" exact component={Letter} />
       </Switch>
     </Router>
   );
